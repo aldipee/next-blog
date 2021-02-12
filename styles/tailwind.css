@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Sohne-Regular';
+  src: local('Sohne-Regular'), url(../assets/fonts/sohne-500-normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Sohne-Bold';
+  src: local('Sohne-Bold'), url('../assets/fonts/sohne-700-normal.woff') format('woff');
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
