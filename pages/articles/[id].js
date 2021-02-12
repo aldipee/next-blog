@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
-import Toc from 'react-toc';
+import { NextSeo } from 'next-seo';
 import fetcher from '../../libs/fetcher';
 import ArticleHeader from '../../components/ArticleHeader';
 import Code from '../../components/Code/index';
 import Image from '../../components/Image';
 import Footer from '../../components/Footer/index';
+import TableOfContents from '../../components/TableOfContents';
 import { UnorderList, List } from '../../components/List';
 import BlockQuote from '../../components/BlockQuotes';
-import { NextSeo } from 'next-seo';
-
 const getURL = (id) => `https://dev.to/api/articles/${id}`;
 
 function Home({ article, articleId }) {
@@ -64,16 +63,54 @@ function Home({ article, articleId }) {
   return (
     <>
       <ArticleHeader data={article} />
-      <div className='max-w-4xl mx-auto px-6 pt-8  mt-14 lg:px-7'>
+      <div className='px-6 pt-8 '>
         <NextSeo title={article.title} description={article.description} />
-        <Toc markdownText={article.body_markdown} />
-        <ReactMarkdown
-          options={{
-            overrides,
-          }}
-        >
-          {article.body_markdown}
-        </ReactMarkdown>
+        <div class='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
+        <div class='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div>
+        <div class='relative min-h-screen flex flex-col'>
+          {/* 3 column wrapper */}
+
+          <div class='flex-grow w-full max-w-7xl mx-auto  lg:flex'>
+            {/* Left sidebar & main wrapper */}
+            <div class='flex-1 min-w-0 bg-red xl:flex'>
+              <div class=' xl:flex-shrink-0 xl:w-36  bg-white'>
+                <div class='h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
+                  {/* Start left column area */}
+                  <div class='h-full relative' style={{ minHeight: '12rem' }}>
+                    <TableOfContents bodyMarkDown={article.body_markdown} />
+                  </div>
+                  {/* End left column area */}
+                </div>
+              </div>
+
+              <div class='bg-white lg:min-w-0 lg:flex-1'>
+                <div class='h-full py-6 px-4 sm:px-6 lg:px-8'>
+                  {/* Start main area */}
+                  <div class='relative h-full' style={{ minHeight: '36rem' }}>
+                    <ReactMarkdown
+                      options={{
+                        overrides,
+                      }}
+                    >
+                      {article.body_markdown}
+                    </ReactMarkdown>
+                  </div>
+                  {/* End main area */}
+                </div>
+              </div>
+            </div>
+
+            <div class=' pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 xl:pr-0'>
+              <div class='h-full pl-6 py-6 lg:w-36'>
+                {/* Start right column area */}
+                <div class='h-full relative' style={{ minHeight: '16rem' }}>
+                  {/* <div class='absolute inset-0 border-4 border-gray-200 border-dashed rounded-lg'></div> */}
+                </div>
+                {/* End right column area */}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
