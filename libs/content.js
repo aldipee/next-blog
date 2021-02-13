@@ -1,11 +1,11 @@
 export function generateLinkMarkup($contentElement) {
-  console.log($contentElement, '$Content');
-  const headings = [...$contentElement.querySelectorAll('h2, h3')];
+  console.log($contentElement, "$Content");
+  const headings = [...$contentElement.querySelectorAll("h2, h3")];
   const parsedHeadings = headings.map((heading) => {
     return {
       title: heading.innerText,
-      depth: heading.nodeName.replace(/\D/g, ''),
-      id: heading.getAttribute('id'),
+      depth: heading.nodeName.replace(/\D/g, ""),
+      id: heading.getAttribute("id"),
     };
   });
 
@@ -14,9 +14,9 @@ export function generateLinkMarkup($contentElement) {
 
 function updateLinks(visibleId, $links) {
   $links.map((link) => {
-    let href = link.getAttribute('href');
-    link.classList.remove('text-primaryBlue', 'font-semibold');
-    if (href === visibleId) link.classList.add('text-primaryBlue', 'font-semibold');
+    let href = link.getAttribute("href");
+    link.classList.remove("text-primaryBlue", "font-semibold");
+    if (href === visibleId) link.classList.add("text-primaryBlue", "font-semibold");
   });
 }
 
@@ -24,7 +24,7 @@ function handleObserver(entries, observer, $links) {
   entries.forEach((entry) => {
     const { target, isIntersecting, intersectionRatio } = entry;
     if (isIntersecting && intersectionRatio >= 1) {
-      const visibleId = `#${target.getAttribute('id')}`;
+      const visibleId = `#${target.getAttribute("id")}`;
       updateLinks(visibleId, $links);
     }
   });
@@ -32,7 +32,7 @@ function handleObserver(entries, observer, $links) {
 
 export function createObserver($links) {
   const options = {
-    rootMargin: '0px 0px -200px 0px',
+    rootMargin: "0px 0px -200px 0px",
     threshold: 1,
   };
   const callback = (e, o) => handleObserver(e, o, $links);
@@ -41,10 +41,23 @@ export function createObserver($links) {
 
 export function initializeTOC($main, $aside) {
   // Part 3
-  const $headings = [...$main.querySelectorAll('h2, h3')];
-  const motionQuery = window.matchMedia('(prefers-reduced-motion)');
-  console.log($aside, '$aside');
-  const $links = [...$aside.querySelectorAll('a')];
+  const $headings = [...$main.querySelectorAll("h2, h3")];
+  const motionQuery = window.matchMedia("(prefers-reduced-motion)");
+  console.log($aside, "$aside");
+  const $links = [...$aside.querySelectorAll("a")];
   const observer = createObserver($links);
   $headings.map((heading) => observer.observe(heading));
+}
+
+export function handleLinkClick(evt, $headings, motionQuery) {
+  evt.preventDefault();
+  let id = evt.target.getAttribute("href").replace("#", "");
+  let section = $headings.find((heading) => heading.getAttribute("id") === id);
+  section.setAttribute("tabindex", -1);
+  section.focus();
+
+  window.scroll({
+    behavior: motionQuery.matches ? "instant" : "smooth",
+    top: section.offsetTop - 20,
+  });
 }

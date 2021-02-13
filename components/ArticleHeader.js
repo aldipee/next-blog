@@ -6,13 +6,13 @@ function ArticleHeader({ data, ...props }) {
     <>
       <Navbar.Menu />
       <section class=" text-green-900 relative">
-        <div className="lg:min-h-screen flex flex-col-reverse lg:flex-row">
+        <div className="flex flex-col-reverse lg:min-h-screen lg:flex-row">
           <div class="bg-transparent lg:w-6/12  relative container mx-auto p-4 flex items-center z-10">
             <div class="content float-left py-4 px-5 my-5">
               <div class="text leading-normal hidden sm:block font-titleHomeMedium px-2 text-xl text-black">
                 {readable_publish_date}, 2021
               </div>
-              <h1 className="font-titleHome absolute lg:w-196 md:text-4xl text-primaryBlue text-2xl lg:text-6xl leading-normal">
+              <h1 className="absolute text-2xl leading-normal font-titleHome lg:w-196 md:text-4xl text-primaryBlue lg:text-6xl">
                 <span className="bg-white">{title}</span>
                 {/* <span>{title}</span> */}
               </h1>
