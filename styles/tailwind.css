@@ -1,14 +1,42 @@
-@font-face {
-  font-family: 'Sohne-Regular';
-  src: local('Sohne-Regular'), url(../assets/fonts/sohne-500-normal.woff) format('woff');
-}
-@font-face {
-  font-family: 'Sohne-Bold';
-  src: local('Sohne-Bold'), url('../assets/fonts/sohne-700-normal.woff') format('woff');
-}
-
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Sohne-Regular";
+    src: local("Sohne-Regular"), url("../assets/fonts/sohne-500-normal.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Sohne-Bold";
+    src: local("Sohne-Bold"), url("../assets/fonts/sohne-700-normal.woff") format("woff");
+  }
+
+  .hero-image::after {
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75vh;
+    width: 100%;
+    content: "";
+  }
+  .clear-left {
+    clear: left;
+  }
+  .toc > li {
+    @apply text-gray-600;
+  }
+}
+
+@layer utilities {
+  @variants hover, focus {
+    .toc > li {
+      @apply text-primaryBlue;
+    }
+  }
+}

@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "postcss build styles/tailwind.css --output styles/app.css && next dev",
+    "dev": "next dev",
+    "dev:build-style": "yarn run build:css && yarn dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:css": "postcss build styles/tailwind.css -o styles/app.css"
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.2.0",
