@@ -1,12 +1,17 @@
 import React from "react";
 
-import Toc from "react-toc";
-
-const TableOfContents = ({ bodyMarkDown }) => {
+const TableOfContents = ({ body }) => {
   return (
-    <div className="sticky top-8 self-start">
-      <h4 className="mb-5 pb-2 text-xl font-titleHomeMedium border-gray-300 border-b">Table of contents</h4>
-      <Toc markdownText={bodyMarkDown} titleLimit={25} lowestHeadingLevel={5} className="toc" />
+    <div className="sticky self-start top-8">
+      <h4 className="pb-2 mb-5 text-xl border-b border-gray-300 font-titleHomeMedium">Contents</h4>
+      <ul>
+        {body &&
+          body.map((headings) => (
+            <li className={`${headings.depth > 2 ? "pl-4" : ""} mb-3 text-sm text-gray-500  hover:text-primaryBlue`}>
+              <a href={`#${headings.id}`}>{headings.title}</a>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };

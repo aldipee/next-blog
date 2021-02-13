@@ -9,9 +9,17 @@ import Footer from "../../components/Footer/index";
 import TableOfContents from "../../components/TableOfContents";
 import { UnorderList, List } from "../../components/List";
 import BlockQuote from "../../components/BlockQuotes";
+import { generateLinkMarkup } from "../../libs/content";
+
 const getURL = (id) => `https://dev.to/api/articles/${id}`;
 
 function Home({ article, articleId }) {
+  const [data, setData] = React.useState("");
+
+  React.useEffect(() => {
+    setData(generateLinkMarkup(document.querySelector("#main-article")));
+  }, []);
+  console.log(data, "TOC");
   const Pre = ({ children, ...props }) => <Code.Pre code={children.props.children} />;
   const Prism = ({ children, ...props }) => <Code.Prism code={children} />;
   const ImageCaptions = ({ children, ...props }) => <Image.ImageCaptions>{children}</Image.ImageCaptions>;
@@ -84,7 +92,7 @@ function Home({ article, articleId }) {
               <div class="bg-white lg:min-w-0 lg:flex-1">
                 <div class="h-full py-6 px-4 sm:px-6 lg:px-8">
                   {/* Start main area */}
-                  <div class="relative h-full" style={{ minHeight: "36rem" }}>
+                  <div id="main-article" class="relative h-full" style={{ minHeight: "36rem" }}>
                     <ReactMarkdown
                       options={{
                         overrides,
@@ -102,7 +110,7 @@ function Home({ article, articleId }) {
               <div class="h-full pl-6 py-6 lg:w-60">
                 {/* Start right column area */}
                 <div class="h-full relative" style={{ minHeight: "16rem" }}>
-                  <TableOfContents bodyMarkDown={article.body_markdown} />
+                  <TableOfContents body={data} />
                   {/* <div class='absolute inset-0 border-4 border-gray-200 border-dashed rounded-lg'></div> */}
                 </div>
                 {/* End right column area */}
