@@ -7,7 +7,7 @@ const ItemHorizontalPost = ({ data, ...props }) => {
     <div className='mt-3 lg:mt-6'>
       <div className='lg:max-w-4xl border-b '>
         <div className='pb-3 flex justify-between'>
-          <div className='w-52 lg:w-9/12 lg:pr-5 lg:pt-2'>
+          <div className='w-52 lg:w-7/12 lg:pt-2'>
             <div className='flex justify-between items-center'>
               <a href='#' className='pr-1 py-0.5  text-xs lg:text-md text-gray-300 font-bold border-b capitalize'>
                 in {tag_list[0]}
@@ -60,7 +60,7 @@ const ItemHorizontalPost = ({ data, ...props }) => {
             </div>
           </div>
           <div
-            className='h-24 w-28 lg:h-auto  lg:w-60 flex bg-cover text-center overflow-hidden'
+            className='rounded-md h-24 w-28 lg:h-auto  lg:w-80 flex bg-cover text-center overflow-hidden'
             style={{ backgroundImage: `url(${cover_image ? cover_image : social_image})` }}
             title={title}
           ></div>
