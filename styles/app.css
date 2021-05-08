@@ -32213,6 +32213,26 @@ video {
   color: rgba(0, 62, 111, var(--tw-text-opacity));
 }
 
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #adadad;
+}
+
+.svg-icon circle {
+  stroke: #adadad;
+  stroke-width: 1;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

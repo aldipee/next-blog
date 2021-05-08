@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/index";
 import TableOfContents from "../../components/TableOfContents";
 import { UnorderList, List } from "../../components/List";
 import BlockQuote from "../../components/BlockQuotes";
+import { VerticalShareButton } from "../../components/ShareButton/index";
 import { generateLinkMarkup, initializeTOC, handleLinkClick } from "../../libs/content";
 
 const getURL = (id) => `https://dev.to/api/articles/${id}`;

@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar/index";
+import { VerticalShareButton } from "../components/ShareButton";
 function ArticleHeader({ data, ...props }) {
   const { title, cover_image, readable_publish_date } = data;
   return (
@@ -15,7 +16,9 @@ function ArticleHeader({ data, ...props }) {
               <h1 className="absolute text-2xl leading-normal font-titleHome lg:w-196 md:text-4xl text-primaryBlue lg:text-6xl">
                 <span className="bg-white">{title}</span>
                 {/* <span>{title}</span> */}
+                <VerticalShareButton />
               </h1>
+
               {/* <div class="heading mb-3 text-2xl md:text-4xl">{title}</div> */}
             </div>
           </div>

@@ -7,14 +7,14 @@ import useRequest from '../libs/useRequest';
 import fetcher from '../libs/fetcher';
 import useSWR from 'swr';
 
-const URL = 'https://dev.to/api/articles';
+const URL = 'https://dev.to/api/articles/me/published';
 
 function Home({ initialData }) {
   const { data } = useSWR(URL, fetcher, { initialData });
   return (
     <>
       <Navbar.Menu />
-      <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:px-7'>
+      <div className='px-2 mx-auto max-w-7xl sm:px-4 lg:px-7'>
         <PopularPost />
         <ContentLayout data={data} />
       </div>

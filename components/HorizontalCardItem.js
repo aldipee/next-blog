@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 
 const Navbar = ({ data, ...props }) => {
   const { cover_image, social_image, title, description } = data;
   return (
-    <div className='mt-4 max-w-sm md:mx-1 w-full lg:flex'>
+    <div className="w-full max-w-sm mt-4 md:mx-1 lg:flex">
       <div
-        className=' h-20  lg:h-auto lg:w-32 flex-none bg-cover bg-center bg-no-repeat  border-l border-t border-b rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden hidden sm:block'
+        className="flex-none hidden h-20 overflow-hidden text-center bg-center bg-no-repeat bg-cover border-t border-b border-l rounded-t lg:h-auto lg:w-32 lg:rounded-t-none lg:rounded-l sm:block"
         style={{ backgroundImage: `url(${social_image})` }}
-        title='Woman holding a mug'
+        title="Woman holding a mug"
       ></div>
-      <div className='border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
-        <div className=''>
-          {/* <p className="text-sm text-grey font-body flex items-center">Members only</p> */}
-          <div className='text-black font-bold text-md mb-2 font-titleHome line-clamp-2'>{title}</div>
-          <p className='text-grey-darker font-body text-sm'>{description}</p>
+      <div className="flex flex-col justify-between p-4 leading-normal bg-white border-b border-l border-r rounded-b border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light lg:rounded-b-none lg:rounded-r">
+        <div className="">
+          {/* <p className="flex items-center text-sm text-grey font-body">Members only</p> */}
+          <div className="mb-2 font-bold text-black text-md font-titleHome line-clamp-2">{title}</div>
+          <p className="text-sm text-grey-darker font-body">{description}</p>
         </div>
       </div>
     </div>

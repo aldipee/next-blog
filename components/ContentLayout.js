@@ -1,6 +1,7 @@
-import React from 'react';
-import ItemHorizontalPost from './ItemHorizontalPost';
-import CardLayout from './CardLayout';
+import React from "react";
+import ItemHorizontalPost from "./ItemHorizontalPost";
+import CardLayout from "./CardLayout";
+import { SidebarQuote, SidebarRecommendations } from "./Sidebar";
 
 const Navbar = ({ data, ...props }) => {
   const renderPost = (posts) => {
@@ -13,18 +14,19 @@ const Navbar = ({ data, ...props }) => {
   };
 
   return (
-    <div className='bg-white'>
-      <div className='py-8'>
-        <div className='flex justify-between container mx-auto'>
-          <div className='w-full lg:w-8/12 '>
-            <div className='flex items-center justify-between'>
-              <h1 className='text-xl font-bold text-gray-700 md:text-2xl'>Amazing Article</h1>
+    <div className="bg-white">
+      <div className="py-8">
+        <div className="container flex justify-between mx-auto">
+          <div className="w-full lg:w-8/12 ">
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl font-bold text-gray-700 md:text-2xl">Amazing Article</h1>
             </div>
             {renderPost(data)}
           </div>
-          <div className='-mx-8 w-4/12 hidden lg:block'>
-            <div className='sticky top-8 self-start'>
-              <CardLayout />
+          <div className="hidden w-4/12 -mx-8 lg:block">
+            <div className="sticky self-start top-8">
+              <SidebarQuote />
+              <SidebarRecommendations />
             </div>
           </div>
         </div>

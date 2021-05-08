@@ -40,3 +40,23 @@
     }
   }
 }
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #adadad;
+}
+
+.svg-icon circle {
+  stroke: #adadad;
+  stroke-width: 1;
+}
