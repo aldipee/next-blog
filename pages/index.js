@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import PopularPost from '../components/PopularPost/PopularPost';
 import ContentLayout from './../components/ContentLayout';
+import { NextSeo } from 'next-seo';
 import useRequest from '../libs/useRequest';
 
 import fetcher from '../libs/fetcher';
@@ -11,11 +12,14 @@ const URL = 'https://dev.to/api/articles/me/published';
 
 function Home({ initialData }) {
   const { data } = useSWR(URL, fetcher, { initialData });
+  const pinnedData = data?.filter((item) => item.tag_list.includes('pinned'));
+
   return (
     <>
+      <NextSeo title={`Pranata's Blog`} description={`Pranata's Blog`} />
       <Navbar.Menu />
       <div className='px-2 mx-auto max-w-7xl sm:px-4 lg:px-7'>
-        <PopularPost />
+        <PopularPost data={pinnedData} />
         <ContentLayout data={data} />
       </div>
     </>

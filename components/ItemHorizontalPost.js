@@ -14,7 +14,7 @@ const ItemHorizontalPost = ({ data, ...props }) => {
               </a>
             </div>
             <div className='lg:mt-2'>
-              <Link href={`/articles/${data.id}`}>
+              <Link href={`/articles/${data.slug}-${data.id}`}>
                 <a className='text-md lg:text-2xl text-black font-titleHome line-clamp-2 lg:line-clamp-3 '>{title}</a>
               </Link>
               <p className='lg:mt-2 hidden sm:block lg:text-lg text-black font-body'>{description}</p>
