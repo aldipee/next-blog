@@ -67,7 +67,7 @@ const Footer = () => {
             <div className="md:grid md:grid-cols-2 md:gap-8"></div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div></div>
-              <div className="mt-12 md:mt-0">
+              {/* <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase">Other Links</h3>
                 <ul className="mt-4 space-y-4">
                   <li>
@@ -84,7 +84,7 @@ const Footer = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

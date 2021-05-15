@@ -2,23 +2,29 @@ import React from 'react';
 import Link from 'next/link';
 const Navbar = (props) => {
   return (
-    <div className='bg-white' style={{ minHeight: '90px' }}>
+    <div className='bg-white'>
       <nav className='bg-white shadow'>
         <div className='px-2 mx-auto max-w-7xl sm:px-4 lg:px-8'>
           <div className='flex justify-between h-16'>
             <div className='flex px-2 lg:px-0'>
-              <div className='flex items-center flex-shrink-0'>
-                <img
-                  className='block w-auto h-8 lg:hidden'
-                  src='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
-                  alt='Workflow'
-                />
-                <img
-                  className='hidden w-auto h-12 lg:block'
-                  src='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
-                  alt='Workflow'
-                />
-              </div>
+             
+                <div className='flex items-center flex-shrink-0'>
+                <Link href='/'>
+                  <img
+                    className='block w-auto h-8 cursor-pointer lg:hidden'
+                    src='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
+                    alt='Workflow'
+                  />
+                    </Link>
+                   <Link href='/'>
+                  <img
+                    className='hidden w-auto h-12 cursor-pointer lg:block'
+                    src='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
+                    alt='Workflow'
+                  />
+                  </Link>
+                </div>
+              
               <div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
                 <Link href={`/`}>
                   <a className='inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-indigo-500'>

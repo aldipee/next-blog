@@ -11710,12 +11710,17 @@ video {
 
 .text-lg {
   font-size: 1.125rem;
-  line-height: 1.75rem;
+  line-height: 1.65rem;
 }
 
 .text-xl {
+  font-size: 1.15rem;
+  line-height: 1.65rem;
+}
+
+.text-1xl {
   font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 1.65rem;
 }
 
 .text-2xl {
@@ -43365,12 +43370,17 @@ SVG Icons - svgicons.sparkk.fr
 
   .sm\:text-lg {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .sm\:text-xl {
+    font-size: 1.15rem;
+    line-height: 1.65rem;
+  }
+
+  .sm\:text-1xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .sm\:text-2xl {
@@ -74907,12 +74917,17 @@ SVG Icons - svgicons.sparkk.fr
 
   .md\:text-lg {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .md\:text-xl {
+    font-size: 1.15rem;
+    line-height: 1.65rem;
+  }
+
+  .md\:text-1xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .md\:text-2xl {
@@ -106449,12 +106464,17 @@ SVG Icons - svgicons.sparkk.fr
 
   .lg\:text-lg {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .lg\:text-xl {
+    font-size: 1.15rem;
+    line-height: 1.65rem;
+  }
+
+  .lg\:text-1xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .lg\:text-2xl {
@@ -137991,12 +138011,17 @@ SVG Icons - svgicons.sparkk.fr
 
   .xl\:text-lg {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .xl\:text-xl {
+    font-size: 1.15rem;
+    line-height: 1.65rem;
+  }
+
+  .xl\:text-1xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .xl\:text-2xl {
@@ -169533,12 +169558,17 @@ SVG Icons - svgicons.sparkk.fr
 
   .\32xl\:text-lg {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .\32xl\:text-xl {
+    font-size: 1.15rem;
+    line-height: 1.65rem;
+  }
+
+  .\32xl\:text-1xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.65rem;
   }
 
   .\32xl\:text-2xl {

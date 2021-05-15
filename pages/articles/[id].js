@@ -43,7 +43,7 @@ function Home({ article, articleId }) {
   const overrides = {
     p: {
       props: {
-        className: 'dropcaps font-body text-base lg:text-xl mt-2 mb-4 lg:mt-6 lg:mb-6 leading-normal ',
+        className: 'dropcaps font-body text-xl lg:text-1xl mt-2 mb-4 lg:mt-6 lg:mb-6 lg:leading-normal ',
       },
     },
     blockquote: {
@@ -66,7 +66,7 @@ function Home({ article, articleId }) {
     },
     h2: {
       props: {
-        className: 'text-2xl lg:text-3xl font-titleHome mt-6 mb-3 lg:mb-6 lg:mt-12',
+        className: 'text-xl lg:text-3xl font-titleHome mt-6 mb-3 lg:mb-6 lg:mt-12',
       },
     },
     h3: {
@@ -83,7 +83,9 @@ function Home({ article, articleId }) {
   return (
     <>
       <ArticleHeader data={article} />
+     
       <div className='px-6 pt-8 bg-white'>
+      
         <NextSeo title={article.title} description={article.description} />
         {/* <div class='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
         <div class='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div> */}
@@ -96,15 +98,17 @@ function Home({ article, articleId }) {
               <div class=' xl:flex-shrink-0 xl:w-48  bg-white'>
                 <div class='h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
                   {/* Start left column area */}
-                  <div class='h-full relative' style={{ minHeight: '12rem' }}></div>
+                  <div class='h-full relative column-style' style={{ minHeight: '3rem' }}></div>
                   {/* End left column area */}
                 </div>
               </div>
 
               <div class='bg-red lg:min-w-0 lg:flex-1'>
-                <div class='h-full py-6 px-16 sm:px-6 lg:px-12'>
+                <div class='h-full py-6  sm:px-6 lg:px-20'>
+                
                   {/* Start main area */}
-                  <div id='main-article' class='relative h-full' style={{ minHeight: '36rem' }}>
+                  <div id='main-article' class='relative h-full' style={{ minHeight: '20rem' }}>
+                  
                     <ReactMarkdown
                       options={{
                         overrides,
@@ -118,12 +122,12 @@ function Home({ article, articleId }) {
               </div>
             </div>
 
-            <div class='bg-white pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 xl:pr-0'>
+            <div class='hidden lg:block bg-white pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 xl:pr-0'>
               <div class='h-full pl-6 py-6 lg:w-60'>
                 {/* Start right column area */}
-                <div class='h-full relative' style={{ minHeight: '16rem' }}>
+                <div class='h-full relative ' style={{ minHeight: '16rem' }}>
                   <TableOfContents body={data} />
-                  {/* <div class='absolute inset-0 border-4 border-gray-200 border-dashed rounded-lg'></div> */}
+                 
                 </div>
                 {/* End right column area */}
               </div>

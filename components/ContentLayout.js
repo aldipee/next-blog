@@ -20,7 +20,7 @@ const Navbar = ({ data, ...props }) => {
         <div className='container flex justify-between mx-auto'>
           <div className='w-full lg:w-8/12 '>
             <div className='flex items-center justify-between'>
-              <h1 className='text-xl font-bold text-gray-700 md:text-2xl'>Amazing Articles</h1>
+              <h1 className='text-xl font-bold text-gray-700 md:text-2xl'>Recently Published</h1>
             </div>
             {renderPost(data)}
           </div>

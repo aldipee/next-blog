@@ -9,7 +9,7 @@ function ArticleHeader({ data, ...props }) {
       <section class=" text-green-900 relative">
         <div className="flex flex-col-reverse lg:min-h-screen lg:flex-row">
           <div class="bg-transparent lg:w-6/12  relative container mx-auto p-4 flex items-center z-10">
-            <div class="content float-left py-4 px-5 my-5">
+            <div class="lg:content lg:float-left lg:py-4 lg:px-5 lg:my-5">
               <div class="text leading-normal hidden sm:block font-titleHomeMedium px-2 text-xl text-black">
                 {readable_publish_date}, 2021
               </div>

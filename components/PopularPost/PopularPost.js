@@ -5,7 +5,7 @@ import DATA from '../../data/articles.json';
 function PopularPosts(props) {
   const { data } = props;
   return (
-    <div className='border-b pb-7'>
+    <div className='mt-8 border-b pb-7'>
       <div>
         <h3 className='text-lg tracking-widest uppercase font-titleHome'>
           <span className='flex'>
