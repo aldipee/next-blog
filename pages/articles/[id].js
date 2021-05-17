@@ -185,7 +185,7 @@ export async function getStaticProps({ params }) {
   const data = await res.json()
 
   // Pass post data to the page via props
-  return { props: { article: data, articleId: id } }
+  return { props: { article: data, articleId: id }, revalidate : 1 }
 }
 
 export default Home;

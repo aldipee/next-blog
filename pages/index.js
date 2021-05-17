@@ -38,6 +38,7 @@ export async function getStaticProps() {
     props: {
       initialData,
     },
+    revalidate : 1
   };
 }
 export default Home;
