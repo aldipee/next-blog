@@ -90,7 +90,7 @@ function Home({ article, articleId }) {
      
       <div className='px-6 pt-8 bg-white'>
       
-        <NextSeo title={article.title} description={article.description} />
+        <NextSeo title={article?.title} description={article?.description} />
         {/* <div className='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
         <div className='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div> */}
         <div className='relative min-h-screen bg-white flex flex-col'>
@@ -112,14 +112,16 @@ function Home({ article, articleId }) {
                 
                   {/* Start main area */}
                   <div id='main-article' className='relative h-full' style={{ minHeight: '20rem' }}>
-                  
-                    <ReactMarkdown
+                    {article?.body_markdown && (
+                      <ReactMarkdown
                       options={{
                         overrides,
                       }}
                     >
-                      {article.body_markdown}
+                      {article?.body_markdown}
                     </ReactMarkdown>
+                    )}
+                    
                   </div>
                   {/* End main area */}
                 </div>

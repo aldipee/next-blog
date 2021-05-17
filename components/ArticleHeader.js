@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar/index";
 import { VerticalShareButton } from "../components/ShareButton";
-function ArticleHeader({ data, ...props }) {
-  const { title, cover_image, readable_publish_date } = data;
+function ArticleHeader({ data = {}, ...props }) {
+  const { title = 'Default Title', cover_image, readable_publish_date } = data;
   return (
     <>
       <Navbar.Menu />
