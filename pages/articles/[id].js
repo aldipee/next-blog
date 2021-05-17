@@ -144,10 +144,46 @@ function Home({ article, articleId }) {
   );
 }
 
-export default Home;
 
-export async function getServerSideProps({ query }) {
-  const data = await fetcher(getURL(query.id.slice(-6)));
-  console.log({ article: data, articleId: query.id });
-  return { props: { article: data, articleId: query.id } };
+
+// export async function getServerSideProps({ query }) {
+//   const data = await fetcher(getURL(query.id.slice(-6)));
+//   console.log({ article: data, articleId: query.id });
+//   return { props: { article: data, articleId: query.id } };
+// }
+
+
+// This function gets called at build time
+export async function getStaticPaths() {
+  const URL = 'https://dev.to/api/articles/me/published';
+
+  // Call an external API endpoint to get posts
+  const res = await fetch(URL,{headers : {
+    'api-key': 'N9FgggExkv9KrTWcyidGNVCz'
+  }})
+  const posts = await res.json()
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { id: `${post.slug}-${post.id}` },
+  }))
+  console.log(paths, 'INI_PATHS')
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: true }
 }
+
+export async function getStaticProps({ params }) {
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  console.log(params, 'INO_PARAMS')
+  const id = params.id.slice(-6)
+  const res = await fetch(getURL(id))
+  const data = await res.json()
+
+  // Pass post data to the page via props
+  return { props: { article: data, articleId: id } }
+}
+
+export default Home;

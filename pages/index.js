@@ -25,8 +25,19 @@ function Home({ initialData }) {
     </>
   );
 }
-export async function getServerSideProps() {
-  const data = await fetcher(URL);
-  return { props: { initialData: data } };
+// export async function getServerSideProps() {
+//   const data = await fetcher(URL);
+//   return { props: { initialData: data } };
+// }
+
+export async function getStaticProps() {
+  // Get todo list from an API
+  const initialData = await fetcher(URL);
+
+  return {
+    props: {
+      initialData,
+    },
+  };
 }
 export default Home;
