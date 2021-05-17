@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import { NextSeo } from 'next-seo';
+import Head from 'next/head'
 import fetcher from '../../libs/fetcher';
 import ArticleHeader from '../../components/ArticleHeader';
 import Code from '../../components/Code/index';
@@ -37,7 +38,7 @@ function Home({ article, articleId }) {
   const ImageCaptions = ({ children, ...props }) => <Image.ImageCaptions>{children}</Image.ImageCaptions>;
   const ImageZoom = ({ alt, src, ...props }) => {
     console.log(src);
-    return <Image.Image source={src} alt={alt} />;
+    return <Image.Image  source={src} alt={alt} />;
   };
 
   const overrides = {
@@ -82,32 +83,35 @@ function Home({ article, articleId }) {
   };
   return (
     <>
+      <Head>
+        <link rel="dns-prefetch" href={`https://dev.to/api/articles/698914`} as="fetch" crossorigin="anonymous" />
+      </Head>
       <ArticleHeader data={article} />
      
       <div className='px-6 pt-8 bg-white'>
       
         <NextSeo title={article.title} description={article.description} />
-        {/* <div class='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
-        <div class='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div> */}
-        <div class='relative min-h-screen bg-white flex flex-col'>
+        {/* <div className='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
+        <div className='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div> */}
+        <div className='relative min-h-screen bg-white flex flex-col'>
           {/* 3 column wrapper */}
 
-          <div class='flex-grow w-full max-w-7xl mx-auto  lg:flex'>
+          <div className='flex-grow w-full max-w-7xl mx-auto  lg:flex'>
             {/* Left sidebar & main wrapper */}
-            <div class='flex-1 min-w-0 bg-red xl:flex'>
-              <div class=' xl:flex-shrink-0 xl:w-48  bg-white'>
-                <div class='h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
+            <div className='flex-1 min-w-0 bg-red xl:flex'>
+              <div className=' xl:flex-shrink-0 xl:w-48  bg-white'>
+                <div className='h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0'>
                   {/* Start left column area */}
-                  <div class='h-full relative column-style' style={{ minHeight: '3rem' }}></div>
+                  <div className='h-full relative column-style' style={{ minHeight: '3rem' }}></div>
                   {/* End left column area */}
                 </div>
               </div>
 
-              <div class='bg-red lg:min-w-0 lg:flex-1'>
-                <div class='h-full py-6  sm:px-6 lg:px-20'>
+              <div className='bg-red lg:min-w-0 lg:flex-1'>
+                <div className='h-full py-6  sm:px-6 lg:px-20'>
                 
                   {/* Start main area */}
-                  <div id='main-article' class='relative h-full' style={{ minHeight: '20rem' }}>
+                  <div id='main-article' className='relative h-full' style={{ minHeight: '20rem' }}>
                   
                     <ReactMarkdown
                       options={{
@@ -122,10 +126,10 @@ function Home({ article, articleId }) {
               </div>
             </div>
 
-            <div class='hidden lg:block bg-white pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 xl:pr-0'>
-              <div class='h-full pl-6 py-6 lg:w-60'>
+            <div className='hidden lg:block bg-white pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 xl:pr-0'>
+              <div className='h-full pl-6 py-6 lg:w-60'>
                 {/* Start right column area */}
-                <div class='h-full relative ' style={{ minHeight: '16rem' }}>
+                <div className='h-full relative ' style={{ minHeight: '16rem' }}>
                   <TableOfContents body={data} />
                  
                 </div>
@@ -144,6 +148,6 @@ export default Home;
 
 export async function getServerSideProps({ query }) {
   const data = await fetcher(getURL(query.id.slice(-6)));
-  console.log({ initialData: data, article: query.id });
+  console.log({ article: data, articleId: query.id });
   return { props: { article: data, articleId: query.id } };
 }

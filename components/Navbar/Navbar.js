@@ -11,6 +11,7 @@ const Navbar = (props) => {
                 <div className='flex items-center flex-shrink-0'>
                 <Link href='/'>
                   <img
+                    
                     className='block w-auto h-8 cursor-pointer lg:hidden'
                     src='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
                     alt='Workflow'
