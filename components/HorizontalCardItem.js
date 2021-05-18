@@ -7,7 +7,7 @@ const Navbar = ({ data, ...props }) => {
     <div className='cursor-pointer w-full max-w-sm mt-4 md:mx-1 lg:flex'>
       <div
         className='flex-none hidden h-20 overflow-hidden text-center bg-center bg-no-repeat bg-cover border-t border-b border-l rounded-t lg:h-auto lg:w-32 lg:rounded-t-none lg:rounded-l sm:block'
-        style={{ backgroundImage: `url(${social_image})` }}
+        style={{ backgroundImage: `url(${social_image || cover_image})` }}
         title='Woman holding a mug'
       ></div>
       <Link href={`/articles/${data.slug}-${data.id}`}>
