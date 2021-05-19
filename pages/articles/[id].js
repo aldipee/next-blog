@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
-import { NextSeo } from 'next-seo';
-import Head from 'next/head'
+import { NextSeo, ArticleJsonLd } from 'next-seo';
+import Head from 'next/head';
 import fetcher from '../../libs/fetcher';
 import ArticleHeader from '../../components/ArticleHeader';
 import Code from '../../components/Code/index';
@@ -38,7 +38,7 @@ function Home({ article, articleId }) {
   const ImageCaptions = ({ children, ...props }) => <Image.ImageCaptions>{children}</Image.ImageCaptions>;
   const ImageZoom = ({ alt, src, ...props }) => {
     console.log(src);
-    return <Image.Image  source={src} alt={alt} />;
+    return <Image.Image source={src} alt={alt} />;
   };
 
   const overrides = {
@@ -83,19 +83,48 @@ function Home({ article, articleId }) {
   };
   return (
     <>
-      <Head>
-        <link rel="dns-prefetch" href={`https://dev.to/api/articles/698914`} as="fetch" crossorigin="anonymous" />
-      </Head>
+      <ArticleJsonLd
+        url={`https://aldipee.com/articles/${article?.slug}-${article?.id}`}
+        title={article?.title}
+        images={[article?.cover_image]}
+        datePublished={article?.published_timestamp}
+        dateModified={article?.edited_at}
+        authorName={['Aldi Pranata', 'aldipee']}
+        publisherName='Aldi Pranata'
+        publisherLogo='https://firebasestorage.googleapis.com/v0/b/principal-my.appspot.com/o/blog-logo.svg?alt=media&token=6427d288-e054-4376-9386-f5f483f9978f'
+        description={article?.description}
+      />
       <ArticleHeader data={article} />
-     
+
       <div className='px-6 pt-8 bg-white'>
-      
-        <NextSeo title={article?.title} description={article?.description} />
-        {/* <div className='fixed top-0 left-0 w-1/2 h-full' aria-hidden='true'></div>
-        <div className='fixed top-0 right-0 w-1/2 h-full ' aria-hidden='true'></div> */}
+        <NextSeo
+          title={article?.title}
+          description={article?.description}
+          openGraph={{
+            title: article?.title,
+            description: article?.description,
+            url: `https://aldipee.com/articles/${article?.slug}-${article?.id}`,
+            type: 'article',
+            article: {
+              publishedTime: article?.published_timestamp,
+              modifiedTime: article?.edited_at,
+              section: article?.tags?.[0],
+              authors: ['Aldi Pranata', 'aldipee'],
+              tags: article?.tags,
+            },
+            images: [
+              {
+                url: article?.cover_image,
+                width: 850,
+                height: 650,
+                alt: article?.title,
+              },
+            ],
+          }}
+        />
+
         <div className='relative min-h-screen bg-white flex flex-col'>
           {/* 3 column wrapper */}
-
           <div className='flex-grow w-full max-w-7xl mx-auto  lg:flex'>
             {/* Left sidebar & main wrapper */}
             <div className='flex-1 min-w-0 bg-red xl:flex'>
@@ -109,19 +138,17 @@ function Home({ article, articleId }) {
 
               <div className='bg-red lg:min-w-0 lg:flex-1'>
                 <div className='h-full py-6  sm:px-6 lg:px-20'>
-                
                   {/* Start main area */}
                   <div id='main-article' className='relative h-full' style={{ minHeight: '20rem' }}>
                     {article?.body_markdown && (
                       <ReactMarkdown
-                      options={{
-                        overrides,
-                      }}
-                    >
-                      {article?.body_markdown}
-                    </ReactMarkdown>
+                        options={{
+                          overrides,
+                        }}
+                      >
+                        {article?.body_markdown}
+                      </ReactMarkdown>
                     )}
-                    
                   </div>
                   {/* End main area */}
                 </div>
@@ -133,7 +160,6 @@ function Home({ article, articleId }) {
                 {/* Start right column area */}
                 <div className='h-full relative ' style={{ minHeight: '16rem' }}>
                   <TableOfContents body={data} />
-                 
                 </div>
                 {/* End right column area */}
               </div>
@@ -146,46 +172,39 @@ function Home({ article, articleId }) {
   );
 }
 
-
-
-// export async function getServerSideProps({ query }) {
-//   const data = await fetcher(getURL(query.id.slice(-6)));
-//   console.log({ article: data, articleId: query.id });
-//   return { props: { article: data, articleId: query.id } };
-// }
-
-
 // This function gets called at build time
 export async function getStaticPaths() {
   const URL = 'https://dev.to/api/articles/me/published';
 
   // Call an external API endpoint to get posts
-  const res = await fetch(URL,{headers : {
-    'api-key': 'N9FgggExkv9KrTWcyidGNVCz'
-  }})
-  const posts = await res.json()
+  const res = await fetch(URL, {
+    headers: {
+      'api-key': 'N9FgggExkv9KrTWcyidGNVCz',
+    },
+  });
+  const posts = await res.json();
 
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post) => ({
     params: { id: `${post.slug}-${post.id}` },
-  }))
-  console.log(paths, 'INI_PATHS')
+  }));
+  console.log(paths, 'INI_PATHS');
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: true }
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  console.log(params, 'INO_PARAMS')
-  const id = params.id.slice(-6)
-  const res = await fetch(getURL(id))
-  const data = await res.json()
+  console.log(params, 'INO_PARAMS');
+  const id = params.id.slice(-6);
+  const res = await fetch(getURL(id));
+  const data = await res.json();
 
   // Pass post data to the page via props
-  return { props: { article: data, articleId: id }, revalidate : 1 }
+  return { props: { article: data, articleId: id }, revalidate: 1 };
 }
 
 export default Home;
