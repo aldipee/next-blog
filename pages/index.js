@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import PopularPost from '../components/PopularPost/PopularPost';
 import ContentLayout from './../components/ContentLayout';
-import { NextSeo } from 'next-seo';
+import { NextSeo, BlogJsonLd  } from 'next-seo';
 import useRequest from '../libs/useRequest';
 
 import fetcher from '../libs/fetcher';
@@ -17,6 +17,12 @@ function Home({ initialData }) {
   return (
     <>
       <NextSeo title={`Pranata's Blog`} description={`Pranata's Blog`} />
+      <BlogJsonLd
+        url="https://aldipee.com"
+        title="Pranata's Blog"
+        authorName="Aldi Pranata"
+        description="Pranata's Blog."
+      />
       <Navbar.Menu />
       <div className='px-2 mx-auto max-w-7xl sm:px-4 lg:px-7'>
         <PopularPost data={pinnedData} />
