@@ -2,12 +2,17 @@ import React from "react";
 
 const TableOfContents = ({ body }) => {
   return (
-    <aside className="sticky self-start top-8 ">
+    <aside id="toc-container" className="sticky">
       {/* <h4 className='pb-2 mb-5 text-xl font-titleHomeMedium'>Contents</h4> */}
-      <ul className="px-4 border-l border-gray-300">
+      <ul id="toc" className="px-4 list-group-item">
         {body &&
-          body.map((headings,index) => (
-            <li key={`keysome-${headings.id}-${index}`} className={`${headings.depth > 2 ? "pl-4" : ""} mb-3 text-xs text-gray-500  hover:text-primaryBlue`}>
+          body.map((headings, index) => (
+            <li
+              key={`keysome-${headings.id}-${index}`}
+              className={`${
+                headings.depth > 2 ? "list-group-item list-group-item-toc pl-4" : "list-group-item list-group-item-toc"
+              } `}
+            >
               <a href={`#${headings.id}`}>{headings.title}</a>
             </li>
           ))}

@@ -1,35 +1,35 @@
 import React from "react";
 import Navbar from "../components/Navbar/index";
-import { VerticalShareButton } from "../components/ShareButton";
-function ArticleHeader({ data = {}, ...props }) {
-  const { title = 'Default Title', cover_image, readable_publish_date } = data;
+function ArticleHeader({ title, author, publishedDate, category, readTimes, bannerImage }) {
   return (
     <>
       <Navbar.Menu />
-      <section className=" text-green-900 relative">
-        <div className="flex flex-col-reverse lg:min-h-screen lg:flex-row">
-          <div className="bg-transparent lg:w-6/12  relative container mx-auto p-4 flex items-center z-10">
-            <div className="lg:content lg:float-left lg:py-4 lg:px-5 lg:my-5">
-              <div className="text leading-normal hidden sm:block font-titleHomeMedium px-2 text-xl text-black">
-                {readable_publish_date}, 2021
-              </div>
-              <h1 className="absolute text-2xl leading-normal font-titleHome lg:w-196 md:text-4xl text-primaryBlue lg:text-6xl">
-                <span className="bg-white">{title}</span>
-                {/* <span>{title}</span> */}
-                <VerticalShareButton />
-              </h1>
+      <div class="container">
+        <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+          <div class="h-100 tofront">
+            <div class="row justify-content-between">
+              <div class="col-md-6 pt-6 pb-6 pr-6 align-self-center">
+                <p class="text-uppercase font-weight-bold">
+                  <a class="text-danger">{category}</a>
+                </p>
+                <h1 class="display-4 secondfont mb-3 font-weight-bold">{title}</h1>
 
-              {/* <div className="heading mb-3 text-2xl md:text-4xl">{title}</div> */}
+                <div class="d-flex align-items-center">
+                  <small>
+                    {author}{" "}
+                    <span class="text-muted d-block">
+                      {publishedDate} · {readTimes} min. read
+                    </span>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6 pr-0">
+                <img src={bannerImage} />
+              </div>
             </div>
           </div>
-          <div
-            className="h-64 lg:min-h-screen lg:w-6/12  lg:hero-image bg-right-bottom bg-cover flex  "
-            style={{
-              backgroundImage: `url(${cover_image})`,
-            }}
-          ></div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
