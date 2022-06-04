@@ -9,6 +9,8 @@ function PopularPosts(props) {
   console.log(data, "PopularPost");
   const featured = data?.[0];
   data.shift();
+
+  if(!data.length) return null
   return (
     <div class="container pt-4 pb-4">
       <div class="row">
@@ -24,7 +26,7 @@ function PopularPosts(props) {
             ></div>
             <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
               <h2 class="h4 font-weight-bold">
-                <Link href={`/articles/${featured.slug}-${featured.id}`}>
+                <Link href={`/articles/${featured?.slug}-${featured?.id}`}>
                   <a class="text-dark">{featured?.title}</a>
                 </Link>
               </h2>
@@ -50,8 +52,8 @@ function PopularPosts(props) {
                 <img className="cover-image" height="80" src={item?.cover_image} />
                 <div class="pl-3">
                   <h2 class="mb-2 h6 font-weight-bold">
-                    <Link href={`/articles/${item.slug}-${item.id}`}>
-                      <a class="text-dark">{item.title}</a>
+                    <Link href={`/articles/${item?.slug}-${item.id}`}>
+                      <a class="text-dark">{item?.title}</a>
                     </Link>
                   </h2>
                   <div class="card-text text-muted small">{capitalizeFirstLetter(item?.tag_list?.[0])}</div>

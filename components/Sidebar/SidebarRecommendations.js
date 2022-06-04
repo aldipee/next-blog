@@ -1,9 +1,12 @@
 import React from "react";
 import Link from "next/link";
+
 import { capitalizeFirstLetter } from "../../libs/utils/string";
 
 const SidebarRecommendations = (props) => {
   const { data } = props;
+
+  if(!data.length) return null
   return (
     <React.Fragment>
       <div class="col-md-4 pl-4">

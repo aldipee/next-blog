@@ -14,6 +14,8 @@ const Navbar = ({ data, ...props }) => {
     );
   };
 
+  if(!data.length) return null 
+
   return (
     <div className="col-md-8 col-sm-12">
       <h5 class="font-weight-bold spanborder">
